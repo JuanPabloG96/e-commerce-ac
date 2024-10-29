@@ -1,11 +1,136 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Chillemonroll - Landing Page</title>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'primary': '#8b5cf6',
+            'secondary': '#93c5fd',
+          }
+        }
+      }
+    }
+  </script>
 </head>
-<body>
-  <h1>E-commerce levantado con tomcat server</h1>
+
+<body class="min-h-screen bg-gradient-to-br from-secondary to-primary">
+  <header class="bg-white shadow-md">
+    <div class="container mx-auto px-4 py-6 flex justify-center items-center">
+      <img src="/placeholder.svg?height=50&width=50" alt="Chillemonroll Logo" class="h-12 w-12 mr-3">
+      <h1 class="text-3xl font-bold text-primary">Chillemonroll</h1>
+    </div>
+  </header>
+
+  <nav class="bg-primary shadow-md">
+    <div class="container mx-auto px-4">
+      <div class="flex justify-between items-center py-3">
+        <ul class="hidden md:flex space-x-4">
+          <a href="#"
+            class="text-white hover:text-secondary transition py-2 px-3 rounded-md hover:bg-primary-dark">Inicio</a>
+          <a href="#"
+            class="text-white hover:text-secondary transition py-2 px-3 rounded-md hover:bg-primary-dark">Productos</a>
+          <a href="#"
+            class="text-white hover:text-secondary transition py-2 px-3 rounded-md hover:bg-primary-dark">Sobre
+            Nosotros</a>
+          <a href="#"
+            class="text-white hover:text-secondary transition py-2 px-3 rounded-md hover:bg-primary-dark">Contacto</a>
+        </ul>
+        <div class="flex items-center space-x-4">
+          <svg class="w-6 h-6 text-white cursor-pointer hover:text-secondary transition" fill="none"
+            stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <svg class="w-6 h-6 text-white cursor-pointer hover:text-secondary transition" fill="none"
+            stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="9" cy="21" r="1"></circle>
+            <circle cx="20" cy="21" r="1"></circle>
+            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+          </svg>
+          <div class="relative group">
+            <svg class="w-6 h-6 text-white cursor-pointer hover:text-secondary transition" fill="none"
+              stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+              <circle cx="12" cy="7" r="4"></circle>
+            </svg>
+            <div class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-10 hidden group-hover:block">
+              <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Iniciar Sesión</a>
+              <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Registrarse</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container mx-auto px-4 py-12">
+    <section class="text-center mb-16">
+      <h2 class="text-4xl font-bold text-white mb-4">Bienvenido a Chillemonroll</h2>
+      <p class="text-xl text-white mb-8">Descubre la ternura en cada producto</p>
+      <a href="#"
+        class="bg-white text-primary font-bold py-2 px-6 rounded-full hover:bg-secondary hover:text-white transition">
+        Explorar Ahora
+      </a>
+    </section>
+
+    <section>
+      <h3 class="text-2xl font-bold text-white mb-8 text-center">Productos Destacados</h3>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="bg-white rounded-lg shadow-md overflow-hidden">
+          <img src="/placeholder.svg?height=200&width=200" alt="Osito Feliz" class="w-full h-48 object-cover">
+          <div class="p-4">
+            <h4 class="text-lg font-semibold text-primary mb-2">Osito Feliz</h4>
+            <p class="text-gray-600">$19.99</p>
+            <button class="mt-4 w-full bg-secondary text-white py-2 rounded hover:bg-primary transition">
+              Añadir al Carrito
+            </button>
+          </div>
+        </div>
+        <div class="bg-white rounded-lg shadow-md overflow-hidden">
+          <img src="/placeholder.svg?height=200&width=200" alt="Conejito Suave" class="w-full h-48 object-cover">
+          <div class="p-4">
+            <h4 class="text-lg font-semibold text-primary mb-2">Conejito Suave</h4>
+            <p class="text-gray-600">$24.99</p>
+            <button class="mt-4 w-full bg-secondary text-white py-2 rounded hover:bg-primary transition">
+              Añadir al Carrito
+            </button>
+          </div>
+        </div>
+        <div class="bg-white rounded-lg shadow-md overflow-hidden">
+          <img src="/placeholder.svg?height=200&width=200" alt="Gatito Dormilón" class="w-full h-48 object-cover">
+          <div class="p-4">
+            <h4 class="text-lg font-semibold text-primary mb-2">Gatito Dormilón</h4>
+            <p class="text-gray-600">$22.99</p>
+            <button class="mt-4 w-full bg-secondary text-white py-2 rounded hover:bg-primary transition">
+              Añadir al Carrito
+            </button>
+          </div>
+        </div>
+        <div class="bg-white rounded-lg shadow-md overflow-hidden">
+          <img src="/placeholder.svg?height=200&width=200" alt="Perrito Juguetón" class="w-full h-48 object-cover">
+          <div class="p-4">
+            <h4 class="text-lg font-semibold text-primary mb-2">Perrito Juguetón</h4>
+            <p class="text-gray-600">$27.99</p>
+            <button class="mt-4 w-full bg-secondary text-white py-2 rounded hover:bg-primary transition">
+              Añadir al Carrito
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bg-primary text-white py-8 mt-16">
+    <div class="container mx-auto px-4 text-center">
+      <p>&copy; 2023 Chillemonroll. Todos los derechos reservados.</p>
+    </div>
+  </footer>
 </body>
+
 </html>
