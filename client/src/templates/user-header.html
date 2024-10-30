@@ -1,6 +1,6 @@
-<div class="container mx-auto px-4 py-6 flex justify-center items-center">
-  <img src="/e-commerce/client/assets/logo.png" alt="Chillemonroll Logo" class="h-40">
-  <img src="/e-commerce/client/assets/chilemonroll.png" alt=" Chillemonroll Text" class="h-36">
+<div class="container mx-auto px-4 py-6 flex flex-col md:flex-row justify-center items-center">
+  <img src="/e-commerce/client/assets/logo.png" alt="Chillemonroll Logo" class="h-40 mb-4 md:mb-0 md:mr-4">
+  <img src="/e-commerce/client/assets/chilemonroll.png" alt="Chillemonroll Text" class="max-h-36 h-auto object-contain">
 </div>
 
 <nav class="bg-violet-500 shadow-md">
@@ -21,24 +21,29 @@
         </li>
       </ul>
       <div class="flex ml-auto items-center space-x-4">
-        <svg class="w-6 h-6 text-white cursor-pointer hover:text-blue-300 transition" fill="none" stroke="currentColor"
-          viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="9" cy="21" r="1"></circle>
-          <circle cx="20" cy="21" r="1"></circle>
-          <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
-        </svg>
-        <div class="relative group">
-          <svg class="w-6 h-6 text-white cursor-pointer hover:text-blue-300 transition" fill="none"
-            stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <a href="">
+          <svg class="w-6 h-6 text-white cursor-pointer hover:text-blue-300" fill="none" stroke="currentColor"
+            viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="9" cy="21" r="1"></circle>
+            <circle cx="20" cy="21" r="1"></circle>
+            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+          </svg>
+        </a>
+        <div class="relative">
+          <svg id="user-icon" class="w-6 h-6 text-white cursor-pointer hover:text-blue-300" onclick="toggleMenu()"
+            fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
             <circle cx="12" cy="7" r="4"></circle>
           </svg>
-          <div class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-10 hidden group-hover:block">
-            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Iniciar Sesión</a>
-            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Registrarse</a>
+          <div id="menu" class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-10 hidden">
+            <a href="/e-commerce/client/src/view/login.html#login"
+              class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Iniciar Sesión</a>
+            <a href="/e-commerce/client/src/view/login.html#register"
+              class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Registrarse</a>
           </div>
         </div>
       </div>
+
     </div>
   </div>
 </nav>
