@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DynaPuff:wght@400..700&display=swap" rel="stylesheet">
+  <link rel="shortcut icon" href="/e-commerce/client/assets/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="/e-commerce/client/src/css/output.css">
+  <title>Productos</title>
+</head>
+
+<body class="bg-gray-100 bg-gradient-to-br from-blue-300 to-violet-500 flex flex-col h-screen">
+
+  <header id="header"></header>
+
+  <main class="container mx-auto px-4 py-6 flex-grow">
+    <h1 class="text-3xl font-bold mb-4 text-center">Nuestros Productos</h1>
+    <div id="products-container" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"></div>
+  </main>
+
+  <footer class="bg-violet-500 text-white py-8" id="footer"></footer>
+
+  <script src="/e-commerce/client/src/js/controllers/products.js" type="module"></script>
+</body>
+
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="/e-commerce/client/assets/favicon.ico" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DynaPuff:wght@400..700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/e-commerce/client/src/css/output.css">
+  <title>Chillemonroll - Login y Registro</title>
+</head>
+
+<body class="min-h-screen bg-gradient-to-br from-blue-300 to-violet-500 flex flex-col">
+  <header class="bg-white shadow-md w-full" id="header"></header>
+
+  <main class="w-full flex grow">
+    <section
+      class="h-[500px] w-[90%] max-w-[850px] overflow-hidden rounded-lg container m-auto bg-white shadow-lg flex flex-col md:flex-row">
+      <div class="relative flex-1 overflow-hidden">
+        <picture>
+          <img src="/e-commerce/client/assets/design/login-side-art.webp" alt="login side art"
+            class="w-full h-full object-cover">
+          <h1
+            class="hidden md:flex absolute inset-0 flex-col justify-center items-center text-violet-700 text-5xl font-bold text-center bg-black bg-opacity-10 p-4 font-DynaPuff text-shadow-lg">
+            Bienvenido <br>a <br>Chillemonroll
+          </h1>
+        </picture>
+      </div>
+      <div class="flex-1 p-5" id="login">
+        <h2 class="text-3xl font-bold text-center text-violet-500 mb-6">Iniciar Sesión</h2>
+
+        <form id="login-form" class="mb-6">
+          <div class="mb-4">
+            <label for="email" class="block text-gray-700 mb-2">Correo Electrónico</label>
+            <input type="email" id="email" required
+              class="w-full px-4 py-2 border rounded focus:outline-none focus:ring focus:ring-blue-500"
+              placeholder="tu-email@ejemplo.com">
+          </div>
+          <div class="mb-4">
+            <label for="password" class="block text-gray-700 mb-2">Contraseña</label>
+            <input type="password" id="password" required
+              class="w-full px-4 py-2 border rounded focus:outline-none focus:ring focus:ring-blue-500"
+              placeholder="Tu contraseña">
+          </div>
+          <button type="submit"
+            class="w-full bg-violet-500 text-white py-2 rounded hover:bg-blue-500 transition">Iniciar
+            Sesión</button>
+        </form>
+
+        <p class="text-center text-gray-600 mb-4">¿No tienes una cuenta? <a href="#register"
+            class="text-violet-500">Regístrate aquí</a></p>
+      </div>
+
+      <div class="hidden flex-1 p-5" id="register">
+        <h2 class="text-3xl font-bold text-center text-violet-500 mb-6">Registro</h2>
+
+        <form id="register-form">
+          <div class="mb-4">
+            <label for="reg-email" class="block text-gray-700 mb-2">Correo Electrónico</label>
+            <input type="email" id="reg-email" required
+              class="w-full px-4 py-2 border rounded focus:outline-none focus:ring focus:ring-blue-500"
+              placeholder="tu-email@ejemplo.com">
+          </div>
+          <div class="mb-4">
+            <label for="reg-password" class="block text-gray-700 mb-2">Contraseña</label>
+            <input type="password" id="reg-password" required
+              class="w-full px-4 py-2 border rounded focus:outline-none focus:ring focus:ring-blue-500"
+              placeholder="Tu contraseña">
+          </div>
+          <div class="mb-4">
+            <label for="confirm-password" class="block text-gray-700 mb-2">Confirmar Contraseña</label>
+            <input type="password" id="confirm-password" required
+              class="w-full px-4 py-2 border rounded focus:outline-none focus:ring focus:ring-blue-500"
+              placeholder="Confirma tu contraseña">
+          </div>
+          <button type="submit"
+            class="w-full bg-violet-500 text-white py-2 rounded hover:bg-blue-500 transition">Registrar</button>
+        </form>
+
+        <p class="text-center text-gray-600 mt-4">Ya tienes una cuenta? <a href="#login" class="text-violet-500">Inicia
+            sesión aquí</a></p>
+      </div>
+    </section>
+  </main>
+
+  <script type="module" src="/e-commerce/client/src/js/controllers/login.js"></script>
+</body>
+
+</html>
