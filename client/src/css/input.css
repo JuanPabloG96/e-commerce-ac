@@ -21,3 +21,11 @@ header {
     repeating-conic-gradient(var(--c2) 0 45deg,var(--c1) 0 25%)
      0 0/calc(2*var(--s)) calc(2*var(--s));
 }
+
+.text-shadow-lg {
+  text-shadow: 
+    2px 2px 0 white,   /* Borde superior izquierdo */
+    -2px -2px 0 white, /* Borde inferior derecho */
+    2px -2px 0 white,  /* Borde superior derecho */
+    -2px 2px 0 white;  /* Borde inferior izquierdo */
+}
