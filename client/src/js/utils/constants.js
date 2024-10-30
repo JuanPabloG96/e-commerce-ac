@@ -28,3 +28,8 @@ export const products = [
     "descripcion": "Un perrito juguetón que trae diversión a casa."
   }
 ]
+
+export const header = document.getElementById("header");
+export const headerUrl = "/e-commerce/client/src/templates/header.html";
+export const footer = document.getElementById("footer");
+export const footerUrl = "/e-commerce/client/src/templates/footer.html";
