@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="/e-commerce/client/assets/favicon.ico" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=DynaPuff:wght@400..700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/e-commerce/client/src/css/output.css">
+  <title>Chillemonroll - Acerca de</title>
+</head>
+
+<body class="min-h-screen bg-gradient-to-br from-blue-300 to-purple-300 flex flex-col">
+  <header class="bg-white shadow-md w-full" id="header"></header>
+
+  <main class="w-full h-full grow p-5">
+    <section class="container m-auto bg-white rounded-lg shadow-lg p-8 max-w-[850px]">
+      <h1 class="text-4xl font-bold text-center text-violet-500 mb-6">Acerca de Chillemonroll</h1>
+
+      <p class="text-gray-700 mb-4">
+        Chillemonroll es un proyecto diseñado para proporcionar una experiencia de compra única, donde los usuarios
+        pueden explorar productos de calidad, aprender sobre ellos y realizar compras de manera fácil y eficiente.
+      </p>
+
+      <h2 class="text-2xl font-bold text-violet-500 mt-6 mb-2">Arquitectura en Capas</h2>
+      <p class="text-gray-700 mb-4">
+        Nuestra aplicación sigue una arquitectura en capas que facilita la separación de responsabilidades, mejorando
+        así la mantenibilidad y escalabilidad del código. Las capas principales incluyen:
+      </p>
+      <ul class="list-disc list-inside mb-4">
+        <li><strong>Modelo:</strong> Define las estructuras de datos y las interfaces para interactuar con la base de
+          datos.</li>
+        <li><strong>Controladores:</strong> Gestionan las solicitudes del usuario y la lógica de negocio.</li>
+        <li><strong>Servicios:</strong> Proporcionan funciones reutilizables y lógica de acceso a datos.</li>
+        <li><strong>Vistas:</strong> Presentan la interfaz de usuario, mostrando los datos al usuario.</li>
+      </ul>
+
+      <h2 class="text-2xl font-bold text-violet-500 mt-6 mb-2">Misión y Visión</h2>
+      <div class="flex flex-col md:flex-row md:space-x-4">
+        <div class="flex-1 bg-gray-100 p-4 rounded-lg shadow-md">
+          <h3 class="text-xl font-semibold text-violet-500 mb-2"> Misión</h3>
+          <p class="text-gray-700">
+            Proporcionar a nuestros clientes productos de calidad y una experiencia de compra excepcional, utilizando
+            tecnología de punta y un enfoque en la satisfacción del cliente.
+          </p>
+        </div>
+        <div class="flex-1 bg-gray-100 p-4 rounded-lg shadow-md mt-4 md:mt-0">
+          <h3 class="text-xl font-semibold text-violet-500 mb-2"> Visión</h3>
+          <p class="text-gray-700">
+            Ser la plataforma líder en comercio electrónico en Chile, reconocida por la calidad de nuestros productos y
+            la satisfacción de nuestros clientes.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="bg-violet-500 text-white py-8" id="footer"></footer>
+  <script type="module" src="/e-commerce/client/src/js/controllers/about.js"></script>
+</body>
+
+</html>
