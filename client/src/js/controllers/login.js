@@ -1,7 +1,6 @@
-import { loadTemplate, manageMenu } from "/e-commerce/client/src/js/utils/helpers.js";
+import { loadTemplate, manageMenu, showRegister, showLogin } from "/e-commerce/client/src/js/utils/helpers.js";
 import { header, footer, headerUrl, footerUrl } from "/e-commerce/client/src/js/utils/constants.js";
 import { loginSection, registerSection, registerLink, loginLink } from "/e-commerce/client/src/js/utils/constants.js";
-import { showRegister, showLogin } from "/e-commerce/client/src/js/utils/helpers.js";
 
 // Carga de templates
 loadTemplate(headerUrl, header);
