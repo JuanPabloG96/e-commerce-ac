@@ -189,3 +189,5 @@ export const loginSection = document.getElementById("login");
 export const registerSection = document.getElementById("register");
 export const registerLink = document.querySelector('a[href="#register"]');
 export const loginLink = document.querySelector('a[href="#login"]');
+
+export const API_URL = "http://localhost:8085/api";
