@@ -29,3 +29,14 @@ header {
     2px -2px 0 white,  /* Borde superior derecho */
     -2px 2px 0 white;  /* Borde inferior izquierdo */
 }
+
+.hidden {
+  display: none;
+}
+
+.selected {
+  background-color: #3b82f6;
+  /* color más oscuro para indicar la selección */
+  color: #fff;
+}
+
