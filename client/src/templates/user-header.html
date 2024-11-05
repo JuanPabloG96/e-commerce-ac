@@ -1,27 +1,29 @@
 <div class="container mx-auto px-4 py-6 flex flex-col md:flex-row justify-center items-center">
-  <img src="/e-commerce/client/assets/logo.png" alt="Chillemonroll Logo" class="h-40 mb-4 md:mb-0 md:mr-4">
-  <img src="/e-commerce/client/assets/chilemonroll.png" alt="Chillemonroll Text" class="max-h-36 h-auto object-contain">
+  <img src="/e-commerce/client/assets/logo.png" alt="Chillemonroll Logo" class="h-40 mb-4 md:mb-0 md:mr-4"
+    loading="lazy">
+  <img src="/e-commerce/client/assets/chilemonroll.png" alt="Chillemonroll Text" class="max-h-36 h-auto object-contain"
+    loading="lazy">
 </div>
 
 <nav class="bg-violet-500 shadow-md">
   <div class="container mx-auto px-4">
     <div class="flex justify-center items-center py-3">
       <ul class="hidden md:flex space-x-4 font-DynaPuff">
-        <li><a href="#"
-            class="text-white hover:text-violet-300 transition py-2 px-3 rounded-md hover:bg-violet-700">Inicio</a>
-        </li>
-        <li><a href="#"
+        <li><a href="/e-commerce/client/"
+            class="text-white hover:text-violet-300 transition py-2 px-3 rounded-md hover:bg-violet-700">Inicio</a></li>
+        <li><a href="/e-commerce/client/src/view/products.html"
             class="text-white hover:text-violet-300 transition py-2 px-3 rounded-md hover:bg-violet-700">Productos</a>
         </li>
-        <li><a href="#"
+        <li><a href="/e-commerce/client/src/view/about.html"
             class="text-white hover:text-violet-300 transition py-2 px-3 rounded-md hover:bg-violet-700">Sobre
             Nosotros</a></li>
-        <li><a href="#"
+        <li><a href="/e-commerce/client/src/view/contact.html"
             class="text-white hover:text-violet-300 transition py-2 px-3 rounded-md hover:bg-violet-700">Contacto</a>
         </li>
       </ul>
       <div class="flex ml-auto items-center space-x-4">
-        <a href="">
+        <!-- Icono del carrito -->
+        <a href="/e-commerce/client/src/view/cart.html">
           <svg class="w-6 h-6 text-white cursor-pointer hover:text-blue-300" fill="none" stroke="currentColor"
             viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <circle cx="9" cy="21" r="1"></circle>
@@ -29,21 +31,40 @@
             <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
           </svg>
         </a>
-        <div class="relative">
-          <svg id="user-icon" class="w-6 h-6 text-white cursor-pointer hover:text-blue-300" onclick="toggleMenu()"
-            fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-            <circle cx="12" cy="7" r="4"></circle>
+
+        <!-- Icono de resumen del pedido -->
+        <a href="/e-commerce/client/src/view/summary.html" title="Resumen del pedido">
+          <svg class="w-6 h-6 text-white cursor-pointer hover:text-blue-300" fill="none" stroke="currentColor"
+            viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M6 2h12l4 7H2l4-7z"></path>
+            <path d="M2 9h20v13H2z"></path>
           </svg>
+        </a>
+
+        <!-- Icono de órdenes activas -->
+        <a href="/e-commerce/client/src/view/orders.html" title="Órdenes activas">
+          <svg class="w-6 h-6 text-white cursor-pointer hover:text-blue-300" fill="none" stroke="currentColor"
+            viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M3 3h18v18H3z"></path>
+            <path d="M8 7h8v2H8z"></path>
+            <path d="M8 11h8v2H8z"></path>
+          </svg>
+        </a>
+
+        <!-- Imagen de perfil en lugar del ícono de usuario -->
+        <div class="relative">
+          <img src="/e-commerce/client/assets/default.jpg" alt="Imagen de perfil"
+            class="w-8 h-8 rounded-full cursor-pointer hover:ring-2 hover:ring-blue-300" onclick="toggleMenu()">
           <div id="menu" class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-10 hidden">
-            <a href="/e-commerce/client/src/view/login.html#login"
-              class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Iniciar Sesión</a>
-            <a href="/e-commerce/client/src/view/login.html#register"
-              class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Registrarse</a>
+            <a href="/e-commerce/client/src/view/profile.html"
+              class="block px-4 py-2 text-sm text-gray-700 font-semibold hover:bg-blue-400 hover:text-white">Mi
+              Perfil</a>
+            <a href="/e-commerce/client/src/view/logout.html"
+              class="block px-4 py-2 text-sm text-gray-700 font-semibold hover:bg-blue-400 hover:text-white">Cerrar
+              Sesión</a>
           </div>
         </div>
       </div>
-
     </div>
   </div>
 </nav>
