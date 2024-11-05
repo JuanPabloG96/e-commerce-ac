@@ -1,6 +1,6 @@
 # Chilemonroll
 
-Proyecto de tienda en línea dedicada a productos temáticos de Cinnamoroll y otros artículos de interés. Este proyecto incluye tanto un frontend con HTML, CSS y JavaScript como un backend en Java utilizando Tomcat y MySQL.
+Proyecto de tienda en línea dedicada a productos temáticos de Cinnamoroll y otros artículos de interés. Este proyecto incluye tanto un frontend con HTML, CSS y JavaScript como un backend en Java utilizando Tomcat y MySQL. Proyecto de clase Programación Integrativa.
 
 ## Tabla de Contenidos
 
