@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="/e-commerce/client/assets/favicon.ico" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/css2?family=DynaPuff:wght@400..700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/e-commerce/client/src/css/output.css">
+  <title>Editar Perfil - Chillemonroll</title>
+</head>
+
+<body class="min-h-screen bg-gradient-to-br from-blue-300 to-purple-300 flex flex-col">
+  <header class="bg-white shadow-md w-full" id="header"></header>
+
+  <main class="container mx-auto p-8 bg-white rounded-lg shadow-lg max-w-lg mt-8">
+    <h1 class="text-4xl font-bold text-center text-violet-500 mb-8">Editar Información</h1>
+
+    <!-- Botones para alternar entre formularios -->
+    <div class="flex justify-center mb-8">
+      <button id="edit-shipping-btn"
+        class="section-btn bg-violet-500 text-white py-2 px-4 rounded-l hover:bg-blue-500 transition">Editar
+        Dirección</button>
+      <button id="edit-payment-btn"
+        class="section-btn bg-violet-500 text-white py-2 px-4 rounded-r hover:bg-blue-500 transition">Editar Método de
+        Pago</button>
+    </div>
+
+    <!-- Formulario de Dirección -->
+    <form id="edit-shipping-form" class="hidden">
+      <h2 class="text-2xl font-semibold text-center text-violet-500 mb-4">Datos de Envío</h2>
+      <div class="mb-6">
+        <label for="address" class="block text-gray-700 mb-2">Dirección</label>
+        <input type="text" id="address" required
+          class="w-full px-4 py-2 border rounded focus:outline-none focus:ring focus:ring-blue-500"
+          placeholder="Dirección completa">
+      </div>
+      <div class="mb-6">
+        <label for="zip" class="block text-gray-700 mb-2">Código Postal</label>
+        <input type="text" id="zip" required
+          class="w-full px-4 py-2 border rounded focus:outline-none focus:ring focus:ring-blue-500"
+          placeholder="Código Postal">
+      </div>
+      <div class="mb-6">
+        <label for="city" class="block text-gray-700 mb-2">Ciudad</label>
+        <input type="text" id="city" required
+          class="w-full px-4 py-2 border rounded focus:outline-none focus:ring focus:ring-blue-500"
+          placeholder="Ciudad">
+      </div>
+      <div class="mb-6">
+        <label for="state" class="block text-gray-700 mb-2">Estado</label>
+        <input type="text" id="state" required
+          class="w-full px-4 py-2 border rounded focus:outline-none focus:ring focus:ring-blue-500"
+          placeholder="Estado">
+      </div>
+      <div class="mb-6">
+        <label for="country" class="block text-gray-700 mb-2">País</label>
+        <input type="text" id="country" required
+          class="w-full px-4 py-2 border rounded focus:outline-none focus:ring focus:ring-blue-500" placeholder="País">
+      </div>
+      <button type="submit" class="w-full bg-violet-500 text-white py-2 rounded hover:bg-blue-500 transition">Guardar
+        Dirección</button>
+    </form>
+
+    <!-- Formulario de Método de Pago -->
+    <form id="edit-payment-form" class="hidden">
+      <h2 class="text-2xl font-semibold text-center text-violet-500 mb-4">Método de Pago</h2>
+      <div class="mb-6">
+        <label for="card-type" class="block text-gray-700 mb-2">Tipo de Tarjeta</label>
+        <select id="card-type" required
+          class="w-full px-4 py-2 border rounded focus:outline-none focus:ring focus:ring-blue-500">
+          <option value="">Selecciona tipo de tarjeta</option>
+          <option value="Credit card">Crédito</option>
+          <option value="Debit card">Débito</option>
+        </select>
+      </div>
+      <div class="mb-6">
+        <label for="card-name" class="block text-gray-700 mb-2">Nombre en la Tarjeta</label>
+        <input type="text" id="card-name" required
+          class="w-full px-4 py-2 border rounded focus:outline-none focus:ring focus:ring-blue-500"
+          placeholder="Nombre en la tarjeta">
+      </div>
+      <div class="mb-6">
+        <label for="card-number" class="block text-gray-700 mb-2">Número de Tarjeta</label>
+        <input type="text" id="card-number" required
+          class="w-full px-4 py-2 border rounded focus:outline-none focus:ring focus:ring-blue-500"
+          placeholder="Número de tarjeta">
+      </div>
+      <div class="mb-6">
+        <label for="expiry-date" class="block text-gray-700 mb-2">Fecha de Vencimiento</label>
+        <input type="month" id="expiry-date" required
+          class="w-full px-4 py-2 border rounded focus:outline-none focus:ring focus:ring-blue-500" placeholder="MM/AA">
+      </div>
+      <button type="submit" class="w-full bg-violet-500 text-white py-2 rounded hover:bg-blue-500 transition">Guardar
+        Método de Pago</button>
+    </form>
+  </main>
+
+  <footer class="bg-violet-500 text-white py-8 mt-16" id="footer"></footer>
+
+  <script type="module" src="/e-commerce/client/src/js/controllers/edit.js"></script>
+</body>
+
+</html>
