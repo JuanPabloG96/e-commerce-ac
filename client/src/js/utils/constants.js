@@ -6,7 +6,7 @@ export const products = [
     price: 25.99,
     stock: 15,
     description: "Peluche suave y adorable de Cinnamoroll, perfecto para fans.",
-    img_src: "/e-commerce/client/assets/products/cinnamoroll_plush_toy.jpg"
+    img_src: "/e-commerce/client/assets/products/cinnamoroll_plush_toy.webp"
   },
   {
     id: 2,
@@ -15,7 +15,7 @@ export const products = [
     price: 12.99,
     stock: 30,
     description: "Taza de cerámica con un lindo diseño de Cinnamoroll.",
-    img_src: "/e-commerce/client/assets/products/cinnamoroll_mug.jpg"
+    img_src: "/e-commerce/client/assets/products/cinnamoroll_mug.webp"
   },
   {
     id: 3,
@@ -42,7 +42,7 @@ export const products = [
     price: 19.99,
     stock: 20,
     description: "Camiseta cómoda con un estampado colorido de Cinnamoroll.",
-    img_src: "/e-commerce/client/assets/products/cinnamoroll_tshirt.jpg"
+    img_src: "/e-commerce/client/assets/products/cinnamoroll_tshirt.webp"
   },
   {
     id: 6,
@@ -87,7 +87,7 @@ export const products = [
     price: 10.99,
     stock: 30,
     description: "Funda protectora para teléfono con temática de Cinnamoroll.",
-    img_src: "/e-commerce/client/assets/products/cinnamoroll_phone_case.jpg"
+    img_src: "/e-commerce/client/assets/products/cinnamoroll_phone_case.webp"
   },
   {
     id: 11,
@@ -96,7 +96,7 @@ export const products = [
     price: 16.5,
     stock: 18,
     description: "Bolsa ecológica con la imagen de Cinnamoroll.",
-    img_src: "/e-commerce/client/assets/products/cinnamoroll_tote_bag.jpg"
+    img_src: "/e-commerce/client/assets/products/cinnamoroll_tote_bag.webp"
   },
   {
     id: 12,
@@ -159,7 +159,7 @@ export const products = [
     price: 14.99,
     stock: 20,
     description: "Lonchera compacta con el lindo diseño de Cinnamoroll.",
-    img_src: "/e-commerce/client/assets/products/cinnamoroll_lunch_box.jpg"
+    img_src: "/e-commerce/client/assets/products/cinnamoroll_lunch_box.webp"
   },
   {
     id: 19,
@@ -177,17 +177,44 @@ export const products = [
     price: 11.5,
     stock: 30,
     description: "Alfombrilla de ratón con un diseño suave de Cinnamoroll.",
-    img_src: "/e-commerce/client/assets/products/cinnamoroll_mouse_pad.jpg"
+    img_src: "/e-commerce/client/assets/products/cinnamoroll_mouse_pad.webp"
+  }
+];
+export const orders = [
+  {
+    order_id: 12345,
+    created_at: "2024-10-12",
+    total: 1200,
+    status: "Entregado"
+  },
+  {
+    order_id: 67890,
+    created_at: "2024-10-05",
+    total: 800,
+    status: "En camino"
+  },
+  {
+    order_id: 11223,
+    created_at: "2024-10-01",
+    total: 950,
+    status: "Procesando"
   }
 ];
 
 export const header = document.getElementById("header");
 export const headerUrl = "/e-commerce/client/src/templates/header.html";
+export const userHeaderUrl = "/e-commerce/client/src/templates/user-header.html";
 export const footer = document.getElementById("footer");
 export const footerUrl = "/e-commerce/client/src/templates/footer.html";
+export const productsContainer = document.getElementById("products-container");
 export const loginSection = document.getElementById("login");
 export const registerSection = document.getElementById("register");
 export const registerLink = document.querySelector('a[href="#register"]');
 export const loginLink = document.querySelector('a[href="#login"]');
+export const editShippingBtn = document.getElementById("edit-shipping-btn");
+export const editPaymentBtn = document.getElementById("edit-payment-btn");
+export const editShippingForm = document.getElementById("edit-shipping-form");
+export const editPaymentForm = document.getElementById("edit-payment-form");
+export const ordersContainer = document.getElementById("orders-container");
 
 export const API_URL = "http://localhost:8085/api";

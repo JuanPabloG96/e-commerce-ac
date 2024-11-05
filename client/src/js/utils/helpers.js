@@ -25,6 +25,16 @@ export function manageMenu() {
   })
 }
 
+export function loadProducts(products, container, component) {
+  // Crea un fragmento HTML para evitar múltiples re-renderizaciones
+  let html = '';
+  products.forEach(product => {
+    html += component(product);
+  });
+  // Inserta el fragmento de una sola vez en el contenedor
+  container.innerHTML = html;
+}
+
 // Carga de productos destacados
 export function loadFeaturedProducts(products, container, component) {
   const topProducts = [...products]
@@ -48,4 +58,18 @@ export function showRegister(loginSection, registerSection) {
 export function showLogin(loginSection, registerSection) {
   loginSection.classList.remove("hidden");
   registerSection.classList.add("hidden");
+}
+
+export function showShippingForm(editShippingBtn, editPaymentBtn, editShippingForm, editPaymentForm) {
+  editShippingForm.classList.remove("hidden");
+  editPaymentForm.classList.add("hidden");
+  editShippingBtn.classList.add("selected");
+  editPaymentBtn.classList.remove("selected");
+}
+
+export function showPaymentForm(editShippingBtn, editPaymentBtn, editShippingForm, editPaymentForm) {
+  editPaymentForm.classList.remove("hidden");
+  editShippingForm.classList.add("hidden");
+  editPaymentBtn.classList.add("selected");
+  editShippingBtn.classList.remove("selected");
 }
