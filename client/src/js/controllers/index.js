@@ -1,12 +1,16 @@
 import { productCard } from "/e-commerce/client/src/js/components/productCard.js";
 import { loadTemplate, manageMenu, loadFeaturedProducts } from "/e-commerce/client/src/js/utils/helpers.js";
-import { header, footer, headerUrl, footerUrl, API_URL, products } from "/e-commerce/client/src/js/utils/constants.js";
+import { header, footer, headerUrl, footerUrl, API_URL, products, productsContainer, userHeaderUrl } from "/e-commerce/client/src/js/utils/constants.js";
 import { fetchProducts } from "/e-commerce/client/src/js/services/apiService.js";
 
-const productsContainer = document.getElementById("products-container");
+let userActive = true;
 
 /* Carga de templates */
-loadTemplate(headerUrl, header);
+if (userActive) {
+  loadTemplate(userHeaderUrl, header);
+} else {
+  loadTemplate(headerUrl, header);
+}
 loadTemplate(footerUrl, footer);
 /* Manejo de menu */
 manageMenu();
@@ -17,3 +21,7 @@ manageMenu();
 /* Carga de productos destacados */
 loadFeaturedProducts(products, productsContainer, productCard);
 
+window.toggleMenu = function () {
+  const menu = document.getElementById("menu");
+  console.log(menu);
+}
