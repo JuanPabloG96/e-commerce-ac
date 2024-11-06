@@ -1,6 +1,6 @@
 export function productCard(product) {
   return `
-    <div class="bg-white rounded-lg shadow-md overflow-hidden">
+    <div class="bg-white rounded-lg shadow-md overflow-hidden" key="${product.id}">
       <img src="${product.img_src}" alt="${product.name}" class="w-full h-48 object-cover" loading="lazy">
       <div class="p-4">
         <h4 class="text-lg font-semibold text-violet-500 mb-2">${product.name}</h4>
