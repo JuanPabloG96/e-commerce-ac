@@ -1,0 +1,5 @@
+chilemonroll/controllers/ProductController.class
+chilemonroll/App.class
+chilemonroll/services/ProductService.class
+chilemonroll/models/Product.class
+chilemonroll/models/DatabaseConnection.class

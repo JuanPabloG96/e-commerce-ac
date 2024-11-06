@@ -218,3 +218,4 @@ export const editPaymentForm = document.getElementById("edit-payment-form");
 export const ordersContainer = document.getElementById("orders-container");
 
 export const API_URL = "http://localhost:8085/api";
+

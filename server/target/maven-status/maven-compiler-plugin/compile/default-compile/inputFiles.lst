@@ -1,0 +1,5 @@
+/opt/tomcat/webapps/e-commerce/server/src/main/java/chilemonroll/App.java
+/opt/tomcat/webapps/e-commerce/server/src/main/java/chilemonroll/controllers/ProductController.java
+/opt/tomcat/webapps/e-commerce/server/src/main/java/chilemonroll/models/DatabaseConnection.java
+/opt/tomcat/webapps/e-commerce/server/src/main/java/chilemonroll/models/Product.java
+/opt/tomcat/webapps/e-commerce/server/src/main/java/chilemonroll/services/ProductService.java
