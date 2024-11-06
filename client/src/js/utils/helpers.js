@@ -25,7 +25,7 @@ export function manageMenu() {
   })
 }
 
-export function loadProducts(products, container, component) {
+export function showProducts(products, container, component) {
   // Crea un fragmento HTML para evitar múltiples re-renderizaciones
   let html = '';
   products.forEach(product => {
@@ -33,6 +33,24 @@ export function loadProducts(products, container, component) {
   });
   // Inserta el fragmento de una sola vez en el contenedor
   container.innerHTML = html;
+}
+
+// Función para inicializar la página y cargar los productos
+export async function loadProducts(fetchProducts, showProducts, API_URL, productsContainer, productCard) {
+  try {
+    // Fetch de productos
+    const products = await fetchProducts(API_URL);
+
+    // Carga de productos o mensaje de error si no hay productos
+    if (products && products.length > 0) {
+      showProducts(products, productsContainer, productCard);
+    } else {
+      productsContainer.innerHTML = "<h1>No hay productos disponibles</h1>";
+    }
+  } catch (error) {
+    console.error("Error al cargar los productos:", error);
+    productsContainer.innerHTML = "<h1>Error al cargar los productos</h1>";
+  }
 }
 
 // Carga de productos destacados
