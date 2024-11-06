@@ -1,6 +1,6 @@
 import { productCard } from "/e-commerce/client/src/js/components/productCard.js";
 import { loadTemplate, manageMenu, loadFeaturedProducts } from "/e-commerce/client/src/js/utils/helpers.js";
-import { header, footer, headerUrl, footerUrl, API_URL, products, productsContainer, userHeaderUrl } from "/e-commerce/client/src/js/utils/constants.js";
+import { header, footer, headerUrl, footerUrl, API_URL, productsContainer, userHeaderUrl } from "/e-commerce/client/src/js/utils/constants.js";
 import { fetchProducts } from "/e-commerce/client/src/js/services/apiService.js";
 
 let userActive = true;
@@ -15,11 +15,14 @@ loadTemplate(footerUrl, footer);
 /* Manejo de menu */
 manageMenu();
 
-// Obtener todos los productos
-/* const products = await fetchProducts(API_URL); */
-
-/* Carga de productos destacados */
-loadFeaturedProducts(products, productsContainer, productCard);
+// Función para inicializar la página y cargar los productos
+async function loadProducts() {
+  const products = await fetchProducts(API_URL);
+  loadFeaturedProducts(products, productsContainer, productCard);
+}
+document.addEventListener("DOMContentLoaded", () => {
+  loadProducts();
+});
 
 window.toggleMenu = function () {
   const menu = document.getElementById("menu");
