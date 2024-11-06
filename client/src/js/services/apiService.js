@@ -1,16 +1,22 @@
 export const fetchProducts = async (API_URL) => {
   try {
-    const response = await fetch(`${API_URL}/products`);
+    const response = await fetch(`${API_URL}/products`, {
+      method: 'GET', // Método explícito, aunque 'GET' es el valor por defecto.
+      headers: {
+        'Content-Type': 'application/json', // Aseguramos que se maneje como JSON
+      },
+    });
     if (!response.ok) {
-      throw new Error('Error en la respuesta de la API');
+      throw new Error(`Error en la respuesta de la API: ${response.statusText}`);
     }
     const data = await response.json();
     return data;
   } catch (error) {
-    console.error('Error al fetch de productos:', error);
-    throw error; // O maneja el error de otra manera
+    console.error('Error al hacer fetch de productos:', error);
+    throw error;
   }
 };
+
 
 // Función para crear un usuario
 export const createUser = async (API_URL, userData) => {
