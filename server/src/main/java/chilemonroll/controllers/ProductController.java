@@ -4,40 +4,51 @@ import chilemonroll.models.Product;
 import chilemonroll.services.ProductService;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
+import com.google.gson.Gson;
+
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.List;
-import com.google.gson.Gson;
 
 public class ProductController implements HttpHandler {
     private final ProductService productService;
-    private final Gson gson;  // Instancia de Gson
+    private final Gson gson;
 
-    // Constructor
     public ProductController(ProductService productService) {
         this.productService = productService;
-        this.gson = new Gson(); // Crear una sola instancia de Gson
+        this.gson = new Gson();
     }
 
     @Override
     public void handle(HttpExchange exchange) throws IOException {
-        // Verifica que el método HTTP sea GET
-        if ("GET".equals(exchange.getRequestMethod())) {
-            List<Product> products = productService.getAllProducts();
-            String jsonResponse = gson.toJson(products);  // Usar la instancia de Gson
+        // Agregar encabezados CORS para todas las solicitudes
+        exchange.getResponseHeaders().add("Access-Control-Allow-Origin", "*");
+        exchange.getResponseHeaders().add("Access-Control-Allow-Methods", "GET, OPTIONS");
+        exchange.getResponseHeaders().add("Access-Control-Allow-Headers", "Content-Type");
 
-            // Configura la respuesta como JSON
+        // Manejar solicitudes OPTIONS para la verificación de CORS
+        if ("OPTIONS".equalsIgnoreCase(exchange.getRequestMethod())) {
+            exchange.sendResponseHeaders(204, -1); // Responder sin cuerpo
+            return;
+        }
+
+        // Manejar solicitud GET para obtener productos
+        if ("GET".equalsIgnoreCase(exchange.getRequestMethod())) {
+            List<Product> products = productService.getAllProducts();
+            String jsonResponse = gson.toJson(products);
+
+            // Configurar la respuesta como JSON
             exchange.getResponseHeaders().add("Content-Type", "application/json");
             exchange.sendResponseHeaders(200, jsonResponse.getBytes().length);
 
             try (OutputStream os = exchange.getResponseBody()) {
                 os.write(jsonResponse.getBytes());
             } catch (IOException e) {
-                e.printStackTrace();  // Para depuración
-                exchange.sendResponseHeaders(500, -1); // Enviar error 500 en caso de fallo
+                e.printStackTrace();
+                exchange.sendResponseHeaders(500, -1);
             }
         } else {
-            // Si el método no es GET, responde con un error 405 (Method Not Allowed)
+            // Responder con 405 si el método no es GET ni OPTIONS
             exchange.sendResponseHeaders(405, -1);
         }
     }

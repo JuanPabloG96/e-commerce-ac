@@ -6,16 +6,16 @@ public class Product {
     private double price;
     private String description;
     private int stock;
-    private String imgSrc;
+    private String img_src;
 
     // Constructor actualizado
-    public Product(int id, String name, double price, String description, int stock, String imgSrc) {
+    public Product(int id, String name, double price, String description, int stock, String img_src) {
         this.id = id;
         this.name = name;
         this.price = price;
         this.description = description;
         this.stock = stock;
-        this.imgSrc = imgSrc;
+        this.img_src = img_src;
     }
 
     // Getters y setters para todos los campos
@@ -60,11 +60,11 @@ public class Product {
     }
 
     public String getImgSrc() {
-        return imgSrc;
+        return img_src;
     }
 
-    public void setImgSrc(String imgSrc) {
-        this.imgSrc = imgSrc;
+    public void setImgSrc(String img_src) {
+        this.img_src = img_src;
     }
 }
 

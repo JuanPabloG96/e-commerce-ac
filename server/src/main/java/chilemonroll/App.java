@@ -16,8 +16,7 @@ public class App {
         ProductService productService = new ProductService();
 
         // Registrar el controlador para la ruta /productos
-        server.createContext("/products", new ProductController(productService));
-        System.out.println("Context '/products' registered.");
+        server.createContext("/api/products", new ProductController(productService));
 
         // Iniciar el servidor
         server.start();
