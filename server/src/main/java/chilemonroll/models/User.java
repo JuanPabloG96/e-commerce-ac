@@ -3,14 +3,14 @@ import org.mindrot.jbcrypt.BCrypt;
 
 public class User {
   private int user_id;
-  private String name;
+  private String username;
   private String email;
   private String password;
   private String profile_img;
 
-  public User(int user_id, String name, String email, String password, String profile_img) {
+  public User(int user_id, String username, String email, String password, String profile_img) {
     this.user_id = user_id;
-    this.name = name;
+    this.username = username;
     this.email = email;
     this.setPassword(password);
     this.profile_img = profile_img;
@@ -20,8 +20,8 @@ public class User {
   public int getUser_id() {
     return user_id;
   }
-  public String getName() {
-    return name;
+  public String getUserName() {
+    return username;
   }
   public String getEmail() {
     return email;
@@ -36,8 +36,8 @@ public class User {
   public void setUser_id(int user_id) {
     this.user_id = user_id;
   }
-  public void setName(String name) {
-    this.name = name;
+  public void setUserName(String username) {
+    this.username = username;
   }
   public void setEmail(String email) {
     this.email = email;
