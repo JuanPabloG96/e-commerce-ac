@@ -1,16 +1,23 @@
 package chilemonroll.controllers;
 
-import chilemonroll.models.User;
-import chilemonroll.services.UserService;
-import com.sun.net.httpserver.HttpExchange;
-import com.sun.net.httpserver.HttpHandler;
-import com.google.gson.Gson;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.io.InputStreamReader;
 import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import com.google.gson.Gson;
+import com.sun.net.httpserver.HttpExchange;
+import com.sun.net.httpserver.HttpHandler;
+
+import chilemonroll.dto.ErrorResponse;
+import chilemonroll.dto.LoginRequest;
+import chilemonroll.dto.UserRequest;
+import chilemonroll.models.User;
+import chilemonroll.services.UserService;
+import chilemonroll.utils.SessionManager;
+import chilemonroll.dto.LoginResponse;
 
 public class UserController implements HttpHandler {
     private final UserService userService;
@@ -47,8 +54,13 @@ public class UserController implements HttpHandler {
                     }
                     break;
                 case "POST":
-                    handleCreateUser(exchange);
+                    if (pathParts[2].equals("login")) {
+                        handleLogin(exchange);
+                    } else {
+                        handleCreateUser(exchange);
+                    }
                     break;
+
                 case "PUT":
                     if (pathParts.length == 4) {
                         handleUpdateUser(exchange, Integer.parseInt(pathParts[3]));
@@ -81,29 +93,29 @@ public class UserController implements HttpHandler {
         try {
             // Read the request body as a string first
             String requestBody = new String(exchange.getRequestBody().readAllBytes());
-            
+
             // Check if the body is not empty
             if (requestBody == null || requestBody.isEmpty()) {
                 sendJsonResponse(exchange, 400, gson.toJson(new ErrorResponse("Request body is empty")));
                 return;
             }
-    
+
             // Parse the JSON
             UserRequest request = gson.fromJson(requestBody, UserRequest.class);
-            
+
             // Validate the request object
-            if (request == null || request.getUsername() == null || request.getEmail() == null || request.getPassword() == null) {
+            if (request == null || request.getUsername() == null || request.getEmail() == null
+                    || request.getPassword() == null) {
                 sendJsonResponse(exchange, 400, gson.toJson(new ErrorResponse("Invalid request data")));
                 return;
             }
-    
+
             User newUser = userService.createUser(
-                request.getUsername(),
-                request.getEmail(),
-                request.getPassword(),
-                request.getProfileImg()
-            );
-    
+                    request.getUsername(),
+                    request.getEmail(),
+                    request.getPassword(),
+                    request.getProfileImg());
+
             if (newUser != null) {
                 sendJsonResponse(exchange, 201, gson.toJson(newUser));
             } else {
@@ -113,7 +125,6 @@ public class UserController implements HttpHandler {
             sendJsonResponse(exchange, 400, gson.toJson(new ErrorResponse("Invalid JSON format")));
         }
     }
-    
 
     private void handleUpdateUser(HttpExchange exchange, int userId) throws IOException {
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(exchange.getRequestBody()))) {
@@ -125,12 +136,11 @@ public class UserController implements HttpHandler {
             }
 
             User updatedUser = userService.updateUser(
-                userId,
-                request.getUsername(),
-                request.getEmail(),
-                request.getPassword(),
-                request.getProfileImg()
-            );
+                    userId,
+                    request.getUsername(),
+                    request.getEmail(),
+                    request.getPassword(),
+                    request.getProfileImg());
 
             if (updatedUser != null) {
                 sendJsonResponse(exchange, 200, gson.toJson(updatedUser));
@@ -144,34 +154,40 @@ public class UserController implements HttpHandler {
         exchange.getResponseHeaders().set("Content-Type", "application/json");
         byte[] responseBytes = jsonResponse.getBytes();
         exchange.sendResponseHeaders(statusCode, responseBytes.length);
-        
+
         try (OutputStream os = exchange.getResponseBody()) {
             os.write(responseBytes);
         }
     }
 
-    private static class UserRequest {
-        private String username;
-        private String email;
-        private String password;
-        private String profileImg;
+    private void handleLogin(HttpExchange exchange) throws IOException {
+        try {
+            String requestBody = new String(exchange.getRequestBody().readAllBytes());
 
-        // Getters
-        public String getUsername() { return username; }
-        public String getEmail() { return email; }
-        public String getPassword() { return password; }
-        public String getProfileImg() { return profileImg; }
+            if (requestBody.isEmpty()) {
+                sendJsonResponse(exchange, 400, gson.toJson(new ErrorResponse("Request body is empty")));
+                return;
+            }
+
+            LoginRequest request = gson.fromJson(requestBody, LoginRequest.class);
+
+            if (request == null || request.getEmail() == null || request.getPassword() == null) {
+                sendJsonResponse(exchange, 400, gson.toJson(new ErrorResponse("Invalid login data")));
+                return;
+            }
+
+            User user = userService.loginUser(request.getEmail(), request.getPassword());
+
+            if (user != null) {
+                String sessionToken = SessionManager.createSession(user.getUser_id());
+                LoginResponse response = new LoginResponse(user, sessionToken);
+                sendJsonResponse(exchange, 200, gson.toJson(response));
+            } else {
+                sendJsonResponse(exchange, 401, gson.toJson(new ErrorResponse("Invalid credentials")));
+            }
+        } catch (Exception e) {
+            sendJsonResponse(exchange, 400, gson.toJson(new ErrorResponse("Invalid request format")));
+        }
     }
 
-    private static class ErrorResponse {
-      private final String message;
-
-      public ErrorResponse(String message) {
-          this.message = message;
-      }  
-      public String getMessage() {
-          return message;
-      }
-    }
 }
-
