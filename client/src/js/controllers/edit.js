@@ -1,4 +1,4 @@
-import { loadTemplate, manageMenu } from "/e-commerce/client/src/js/utils/helpers.js";
+import { loadTemplate, manageMenu, isUserAuthenticated } from "/e-commerce/client/src/js/utils/helpers.js";
 import { header, footer, headerUrl, footerUrl } from "/e-commerce/client/src/js/utils/constants.js";
 import { editShippingBtn, editPaymentBtn, editShippingForm, editPaymentForm } from "/e-commerce/client/src/js/utils/constants.js";
 import { showShippingForm, showPaymentForm } from "/e-commerce/client/src/js/utils/helpers.js";

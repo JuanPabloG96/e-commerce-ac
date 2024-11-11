@@ -18,12 +18,15 @@ export function manageMenu() {
   }
 
   window.addEventListener("click", (event) => {
-    if (!event.target.matches("#user-icon")) {
-      const menu = document.getElementById("menu");
+    const menu = document.getElementById("menu");
+    const menuTrigger = event.target.closest('[onclick="toggleMenu()"]');
+
+    if (!menuTrigger && menu) {
       menu.classList.add("hidden");
     }
-  })
+  });
 }
+
 
 export function showProducts(products, container, component) {
   // Crea un fragmento HTML para evitar múltiples re-renderizaciones
@@ -36,20 +39,11 @@ export function showProducts(products, container, component) {
 }
 
 // Función para inicializar la página y cargar los productos
-export async function loadProducts(fetchProducts, showProducts, API_URL, productsContainer, productCard) {
-  try {
-    // Fetch de productos
-    const products = await fetchProducts(API_URL);
-
-    // Carga de productos o mensaje de error si no hay productos
-    if (products && products.length > 0) {
-      showProducts(products, productsContainer, productCard);
-    } else {
-      productsContainer.innerHTML = "<h1>No hay productos disponibles</h1>";
-    }
-  } catch (error) {
-    console.error("Error al cargar los productos:", error);
-    productsContainer.innerHTML = "<h1>Error al cargar los productos</h1>";
+export function loadProducts(products, productsContainer, productCard) {
+  if (products && products.length > 0) {
+    showProducts(products, productsContainer, productCard);
+  } else {
+    productsContainer.innerHTML = "<h1>No hay productos disponibles</h1>";
   }
 }
 
@@ -90,4 +84,34 @@ export function showPaymentForm(editShippingBtn, editPaymentBtn, editShippingFor
   editShippingForm.classList.add("hidden");
   editPaymentBtn.classList.add("selected");
   editShippingBtn.classList.remove("selected");
+}
+
+export function showNotification(message, isSuccess = true) {
+  const notification = document.getElementById('notification');
+  const notificationInner = notification.querySelector('div');
+  const notificationMessage = document.getElementById('notification-message');
+
+  notificationMessage.textContent = message;
+  notificationInner.className = `max-w-md mx-auto m-4 p-4 rounded-lg shadow-lg text-center text-white font-semibold ${isSuccess ? 'bg-green-400' : 'bg-red-400'}`;
+  notification.classList.remove('hidden');
+  notification.classList.add('block');
+}
+
+export function handleAuthResponse(successMessage) {
+  showNotification(successMessage, true);
+  setTimeout(() => {
+    window.location.href = "http://localhost:8080/e-commerce/client/";
+  }, 1500);
+}
+
+export function isUserAuthenticated() {
+  return localStorage.getItem('userSession') !== null;
+};
+
+export function logout() {
+  const logoutButton = document.getElementById('logout');
+  logoutButton.addEventListener('click', () => {
+    localStorage.removeItem('userSession');
+    window.location.href = "http://localhost:8080/e-commerce/client/";
+  });
 }

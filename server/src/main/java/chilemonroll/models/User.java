@@ -7,13 +7,31 @@ public class User {
   private String username;
   private String email;
   private String password;
+  private String created_at;
+  private String updated_at;
   private String profile_img;
 
-  public User(int user_id, String username, String email, String password, String profile_img) {
-    this.user_id = user_id;
+  // Constructor para registro
+  public User(String username, String email, String password) {
     this.username = username;
     this.email = email;
     this.setPassword(password);
+  }
+
+  // Constructor para login
+  public User(int userId, String username, String email, String hashedPassword) {
+    this.user_id = userId;
+    this.username = username;
+    this.email = email;
+    this.password = hashedPassword;
+  }
+
+  // Constructor para actualizar
+  public User(int userId, String username, String email, String hashedPassword, String profile_img) {
+    this.user_id = userId;
+    this.username = username;
+    this.email = email;
+    this.password = hashedPassword;
     this.profile_img = profile_img;
   }
 
@@ -34,15 +52,19 @@ public class User {
     return this.password;
   }
 
-  public String getProfile_img() {
+  public String getCreated_at() {
+    return created_at;
+  }
+
+  public String getUpdated_at() {
+    return updated_at;
+  }
+
+  public String getProfileImg() {
     return profile_img;
   }
 
   // Setters
-  public void setUser_id(int user_id) {
-    this.user_id = user_id;
-  }
-
   public void setUsername(String username) {
     this.username = username;
   }
@@ -58,17 +80,22 @@ public class User {
     if (password.length() < 4) {
       throw new IllegalArgumentException("Password must be at least 4 characters long");
     }
-    password = BCrypt.hashpw(password, BCrypt.gensalt());
-    this.password = password;
+    this.password = BCrypt.hashpw(password, BCrypt.gensalt());
+  }
+
+  public void setCreated_at(String created_at) {
+    this.created_at = created_at;
+  }
+
+  public void setUpdated_at(String updated_at) {
+    this.updated_at = updated_at;
   }
 
   public void setProfile_img(String profile_img) {
     this.profile_img = profile_img;
   }
 
-  // Check password
   public boolean checkPassword(String password) {
     return BCrypt.checkpw(password, this.password);
   }
-
 }

@@ -1,30 +1,32 @@
 import { productCard } from "/e-commerce/client/src/js/components/productCard.js";
-import { loadTemplate, manageMenu, loadFeaturedProducts } from "/e-commerce/client/src/js/utils/helpers.js";
-import { header, footer, headerUrl, footerUrl, API_URL, productsContainer, userHeaderUrl } from "/e-commerce/client/src/js/utils/constants.js";
-import { fetchProducts } from "/e-commerce/client/src/js/services/apiService.js";
+import { loadTemplate, loadFeaturedProducts, manageMenu, isUserAuthenticated, logout } from "/e-commerce/client/src/js/utils/helpers.js";
+import { header, footer, headerUrl, footerUrl, productsContainer, userHeaderUrl } from "/e-commerce/client/src/js/utils/constants.js";
+import { fetchData } from "/e-commerce/client/src/js/services/apiService.js";
 
-let userActive = true;
-
-/* Carga de templates */
-if (userActive) {
-  loadTemplate(userHeaderUrl, header);
-} else {
-  loadTemplate(headerUrl, header);
+// Initialize application
+async function initApp() {
+  // Load appropriate header
+  if (isUserAuthenticated()) {
+    await loadTemplate(userHeaderUrl, header);
+  } else {
+    await loadTemplate(headerUrl, header);
+  }
+  // Load footer
+  await loadTemplate(footerUrl, footer);
+  // Menu management
+  manageMenu();
+  // Load products
+  try {
+    const products = await fetchData("products", "GET", null, "Error al obtener los productos");
+    loadFeaturedProducts(products, productsContainer, productCard);
+  } catch (error) {
+    console.error("Error loading products:", error);
+  }
+  if (isUserAuthenticated()) {
+    logout();
+  }
 }
-loadTemplate(footerUrl, footer);
-/* Manejo de menu */
-manageMenu();
 
-// Función para inicializar la página y cargar los productos
-async function loadProducts() {
-  const products = await fetchProducts(API_URL);
-  loadFeaturedProducts(products, productsContainer, productCard);
-}
-document.addEventListener("DOMContentLoaded", () => {
-  loadProducts();
-});
+// Start app when DOM is ready
+document.addEventListener("DOMContentLoaded", initApp);
 
-window.toggleMenu = function () {
-  const menu = document.getElementById("menu");
-  console.log(menu);
-}
