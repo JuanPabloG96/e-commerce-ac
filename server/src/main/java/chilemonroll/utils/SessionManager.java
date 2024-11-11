@@ -20,5 +20,4 @@ public class SessionManager {
   public static void removeSession(String token) {
     sessions.remove(token);
   }
-
 }

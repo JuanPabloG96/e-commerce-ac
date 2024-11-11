@@ -3,11 +3,16 @@ chilemonroll/utils/SessionManager.class
 chilemonroll/controllers/ProductController.class
 chilemonroll/dto/UserRequest.class
 chilemonroll/App.class
+chilemonroll/controllers/CartController.class
+chilemonroll/models/Cart.class
 chilemonroll/models/Product.class
 chilemonroll/dto/ErrorResponse.class
+chilemonroll/controllers/CartItemRequest.class
 chilemonroll/services/ProductService.class
 chilemonroll/models/User.class
 chilemonroll/models/DatabaseConnection.class
+chilemonroll/services/CartService.class
+chilemonroll/models/CartItem.class
 chilemonroll/services/UserService.class
 chilemonroll/dto/LoginResponse.class
 chilemonroll/dto/LoginRequest.class

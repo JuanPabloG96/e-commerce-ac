@@ -34,7 +34,11 @@ public class CartController implements HttpHandler {
     String[] pathParts = path.split("/");
 
     try {
-      String token = exchange.getRequestHeaders().getFirst("Authorization");
+      String authHeader = exchange.getRequestHeaders().getFirst("Authorization");
+      String token = null;
+      if (authHeader != null && authHeader.startsWith("Bearer ")) {
+        token = authHeader.substring(7);
+      }
       Integer userId = token != null ? SessionManager.getUserId(token) : null;
 
       if (userId == null) {
