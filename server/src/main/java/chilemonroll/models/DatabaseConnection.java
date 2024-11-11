@@ -1,4 +1,4 @@
-package chilemonroll.models;  // Asegúrate de que este paquete sea correcto
+package chilemonroll.models;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -10,10 +10,8 @@ public class DatabaseConnection {
     private static final String USER = "john";
     private static final String PASSWORD = "admin";
 
-    // Método para obtener la conexión a la base de datos
     public static Connection getConnection() throws SQLException {
         try {
-            // Intenta cargar el driver JDBC de MySQL
             Class.forName("com.mysql.cj.jdbc.Driver");
             return DriverManager.getConnection(URL, USER, PASSWORD);
         } catch (ClassNotFoundException e) {
@@ -21,11 +19,10 @@ public class DatabaseConnection {
             throw new SQLException("No se pudo cargar el driver JDBC", e);
         } catch (SQLException e) {
             System.err.println("Error al conectar a la base de datos: " + e.getMessage());
-            throw e;  // Lanza la excepción para que el llamador maneje el error
+            throw e;
         }
     }
 
-    // Método para cerrar la conexión
     public static void closeConnection(Connection connection) {
         try {
             if (connection != null && !connection.isClosed()) {
@@ -37,6 +34,3 @@ public class DatabaseConnection {
         }
     }
 }
-
-
-
