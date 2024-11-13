@@ -104,6 +104,10 @@ export function handleAuthResponse(successMessage) {
   }, 1500);
 }
 
+export function handleCartResponse(successMessage) {
+  showNotification(successMessage, true);
+}
+
 export function isUserAuthenticated() {
   return localStorage.getItem('userSession') !== null;
 };
@@ -114,4 +118,29 @@ export function logout() {
     localStorage.removeItem('userSession');
     window.location.href = "http://localhost:8080/e-commerce/client/";
   });
+}
+
+export function handleButtonState(buttonId, isSuccess = true) {
+  const button = document.getElementById(buttonId);
+  if (isSuccess) {
+    button.textContent = '¡Agregado!';
+    button.classList.remove('bg-blue-500', 'hover:bg-violet-500');
+    button.classList.add('bg-green-400');
+
+    setTimeout(() => {
+      button.textContent = 'Añadir al Carrito';
+      button.classList.remove('bg-green-400');
+      button.classList.add('bg-blue-500', 'hover:bg-violet-500');
+    }, 2000);
+  } else {
+    button.textContent = 'Error al agregar';
+    button.classList.remove('bg-blue-500', 'hover:bg-violet-500');
+    button.classList.add('bg-red-400');
+
+    setTimeout(() => {
+      button.textContent = 'Añadir al Carrito';
+      button.classList.remove('bg-red-400');
+      button.classList.add('bg-blue-500', 'hover:bg-violet-500');
+    }, 2000);
+  }
 }

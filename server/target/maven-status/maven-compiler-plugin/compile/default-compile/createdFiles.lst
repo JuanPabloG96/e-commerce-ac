@@ -10,6 +10,7 @@ chilemonroll/dto/ErrorResponse.class
 chilemonroll/controllers/CartItemRequest.class
 chilemonroll/services/ProductService.class
 chilemonroll/models/User.class
+chilemonroll/utils/SessionManager$SessionInfo.class
 chilemonroll/models/DatabaseConnection.class
 chilemonroll/services/CartService.class
 chilemonroll/models/CartItem.class

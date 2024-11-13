@@ -9,6 +9,7 @@ import chilemonroll.dto.ErrorResponse;
 import chilemonroll.utils.SessionManager;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.util.Map;
 
 public class CartController implements HttpHandler {
   private final CartService cartService;
@@ -22,7 +23,7 @@ public class CartController implements HttpHandler {
   @Override
   public void handle(HttpExchange exchange) throws IOException {
     exchange.getResponseHeaders().add("Access-Control-Allow-Origin", "*");
-    exchange.getResponseHeaders().add("Access-Control-Allow-Methods", "GET, POST, DELETE, OPTIONS");
+    exchange.getResponseHeaders().add("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
     exchange.getResponseHeaders().add("Access-Control-Allow-Headers", "Content-Type, Authorization");
 
     if ("OPTIONS".equalsIgnoreCase(exchange.getRequestMethod())) {
@@ -55,6 +56,12 @@ public class CartController implements HttpHandler {
             handleAddItem(exchange, userId);
           }
           break;
+        case "PUT":
+          if (pathParts.length > 4 && pathParts[3].equals("items")) {
+            handleUpdateItem(exchange, Integer.parseInt(pathParts[4]));
+          }
+          break;
+
         case "DELETE":
           if (pathParts.length > 4 && pathParts[3].equals("items")) {
             handleRemoveItem(exchange, Integer.parseInt(pathParts[4]));
@@ -82,6 +89,11 @@ public class CartController implements HttpHandler {
     String requestBody = new String(exchange.getRequestBody().readAllBytes());
     CartItemRequest request = gson.fromJson(requestBody, CartItemRequest.class);
 
+    if (request.getQuantity() <= 0) {
+      sendJsonResponse(exchange, 400, gson.toJson(new ErrorResponse("Cantidad inválida")));
+      return;
+    }
+
     Cart cart = cartService.getActiveCart(userId);
     if (cart == null) {
       cart = cartService.createCart(userId);
@@ -90,15 +102,26 @@ public class CartController implements HttpHandler {
     if (cartService.addItemToCart(cart.getCart_id(), request.getProduct_id(), request.getQuantity())) {
       sendJsonResponse(exchange, 201, gson.toJson(cartService.getActiveCart(userId)));
     } else {
-      sendJsonResponse(exchange, 400, gson.toJson(new ErrorResponse("Failed to add item to cart")));
+      sendJsonResponse(exchange, 400, gson.toJson(new ErrorResponse("No se pudo agregar el item al carrito")));
     }
   }
 
   private void handleRemoveItem(HttpExchange exchange, int cartItemId) throws IOException {
     if (cartService.removeItemFromCart(cartItemId)) {
-      exchange.sendResponseHeaders(204, -1);
+      sendJsonResponse(exchange, 200, gson.toJson(Map.of("success", true)));
     } else {
       sendJsonResponse(exchange, 404, gson.toJson(new ErrorResponse("Item not found")));
+    }
+  }
+
+  private void handleUpdateItem(HttpExchange exchange, int cartItemId) throws IOException {
+    String requestBody = new String(exchange.getRequestBody().readAllBytes());
+    CartItemRequest request = gson.fromJson(requestBody, CartItemRequest.class);
+
+    if (cartService.updateItemQuantity(cartItemId, request.getQuantity())) {
+      sendJsonResponse(exchange, 200, gson.toJson(Map.of("success", true)));
+    } else {
+      sendJsonResponse(exchange, 400, gson.toJson(new ErrorResponse("No se pudo actualizar la cantidad")));
     }
   }
 

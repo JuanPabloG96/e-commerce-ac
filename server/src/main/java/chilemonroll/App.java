@@ -24,7 +24,7 @@ public class App {
         // Registrar el controlador para la ruta
         server.createContext("/api/products", new ProductController(productService));
         server.createContext("/api/users", new UserController(userService));
-        server.createContext("/api/carts", new CartController(cartService));
+        server.createContext("/api/cart", new CartController(cartService));
 
         // Iniciar el servidor
         server.start();

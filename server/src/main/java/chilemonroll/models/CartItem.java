@@ -7,15 +7,24 @@ public class CartItem {
   private int quantity;
   private String created_at;
   private String updated_at;
-  private Product product; // Optional: for product details
+  private Product product;
 
+  // Constructor para crear un item de carrito
   public CartItem(int cart_id, int product_id, int quantity) {
     this.cart_id = cart_id;
     this.product_id = product_id;
     this.quantity = quantity;
   }
 
-  // Getters and setters
+  // Constructor para obtener un item de carrito
+  public CartItem(int cart_items_id, int cart_id, int product_id, int quantity) {
+    this.cart_items_id = cart_items_id;
+    this.cart_id = cart_id;
+    this.product_id = product_id;
+    this.quantity = quantity;
+  }
+
+  // Getters y setters
   public int getCart_items_id() {
     return cart_items_id;
   }
